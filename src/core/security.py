@@ -4,6 +4,9 @@ from jose import jwt
 from src.core.config import settings
 
 
+"""สร้างฟังก์ชั่นในการ auth ทั้งหมด"""
+
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated = "auto")
 
 
@@ -37,4 +40,13 @@ def decode_access_token(token:str) -> dict | None:
         return payload
     except:
         return None
+    
+    """
+    ตัวอย่าง output 
+    {
+        "sub" : "uuid ของ user",
+        "exp" : 18582832
+    }
+    
+    """
     

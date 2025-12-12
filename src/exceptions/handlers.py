@@ -1,6 +1,6 @@
 from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
-from src.core.config import logger
+from src.core.logging import logger
 import traceback
 
 
@@ -23,7 +23,7 @@ async def global_exception_handler(request: Request, exc:Exception):
     )
     
     
-async def http_exception_handler(request: Request, exc: Exception):
+async def http_exception_handler(request: Request, exc: HTTPException):
     """Handle HTTP exceptions"""
     logger.warning(
         "http_exception",
