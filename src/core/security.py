@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta,timezone
+from typing import Optional
 from passlib.context import CryptContext
 from jose import jwt
 from src.core.config import settings
@@ -18,7 +19,7 @@ def verify_password(plain_password:str , hashed_password:str) -> bool:
     """ตรวจสอบ password ว่าตรงกับ hash หรือไม่"""
     return pwd_context.verify(plain_password,hashed_password)
 
-def create_access_token(data: dict, expires_delta:timedelta | None = None) -> str:
+def create_access_token(data: dict, expires_delta:Optional[timedelta] = None) -> str:
     """สร้าง JWT Token"""
     
     to_encode = data.copy()
@@ -33,7 +34,7 @@ def create_access_token(data: dict, expires_delta:timedelta | None = None) -> st
     
     return encoded_jwt
 
-def decode_access_token(token:str) -> dict | None:
+def decode_access_token(token:str) -> Optional[dict]:
     """Decode JWT token"""
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])

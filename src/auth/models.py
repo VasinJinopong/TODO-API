@@ -6,6 +6,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 import uuid
 from src.database import Base
+from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
@@ -23,7 +24,7 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now(),nullable=False)
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
-    
+    todos = relationship("Todo",back_populates="owner", cascade="all, delete-orphan")
     def __repr__(self):
         return f"<User(id={self.id}, email={self.email}, username={self.username})>"
     
