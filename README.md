@@ -1,7 +1,4 @@
-Perfect! มาสร้าง README สวยๆ กัน 🎨
-
-สร้างไฟล์ README.md ในโปรเจค:
-markdown# TODO API 📝
+# TODO API 📝
 
 A production-ready RESTful API for TODO management with JWT authentication, built with FastAPI and PostgreSQL.
 
